@@ -11,12 +11,12 @@ public class Plane extends Vehicle implements Print{
 
     public static int energy, temperature, humidity;
 
-    Plane(){
-        super();
-        energy = super.energy;
-        temperature = super.temperature;
-        humidity = super.humidity;
-    }
+    // Plane(){
+    //     super();
+    //     energy = super.energy;
+    //     temperature = super.temperature;
+    //     humidity = super.humidity;
+    // }
 
     public void showSpeed(){
         speed = (ThreadLocalRandom.current().nextInt(min_speed/10, max_speed/10+1))*5;//5씩 증가하도록
@@ -38,12 +38,19 @@ public class Plane extends Vehicle implements Print{
     public void printStatus(){
         printCurrent("Plane");
         showSpeed();
-        showEnergy();
         showAltitude();
-        showTemperature();
-        showHumidity();
+        energy = showEnergy();
+        temperature = showTemperature();
+        humidity = showHumidity();
         showDensity();
         printNext();
+    }
+
+    public int[] getStatus(){
+
+        int list[] = {energy, temperature, humidity};
+        return list;
+
     }
 
 }

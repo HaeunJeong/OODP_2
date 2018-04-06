@@ -16,22 +16,22 @@ public abstract class Vehicle{
 
     public abstract void showSpeed();
     
-    public void showEnergy(){
+    public int showEnergy(){
         energy = (ThreadLocalRandom.current().nextInt(min_energy/10, max_energy/10+1))*10;
         System.out.println("Energy: "+energy+"%");
-        //return energy;
+        return energy;
     }
 
-    public void showTemperature(){
+    public int showTemperature(){
         temperature = (ThreadLocalRandom.current().nextInt(min_temperature/10, max_temperature/10+1))*10;
         System.out.println("Temperature: "+temperature+" degree");
-        //return temperature;
+        return temperature;
     }
 
-    public void showHumidity(){
+    public int showHumidity(){
         humidity = (ThreadLocalRandom.current().nextInt(min_humidity/10, max_humidity/10+1))*10;
         System.out.println("Humidity: "+humidity+"%");
-        //return humidity;
+        return humidity;
     }
 
     public void printCurrent(String string){

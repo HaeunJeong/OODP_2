@@ -11,6 +11,7 @@ public class Main{
 
 			System.out.println("(C)ar (P)lane (S)ubmarine (B)lackbox (H)alt");
             vehicle = input.nextLine().charAt(0);
+            int status[];
             
             //충전하는거랑
             
@@ -18,17 +19,20 @@ public class Main{
                 case 'C': 
                             Print car = new Car();
                             car.printStatus();
-                            Blackbox.getInstance().recordActivity("Car", Car.energy, Car.temperature, Car.humidity);
+                            status = car.getStatus();
+                            Blackbox.getInstance().recordActivity("Car", status[0], status[1], status[2]);
                             break;
                 case 'P': 
                             Print plane = new Plane();
                             plane.printStatus();
-                            Blackbox.getInstance().recordActivity("Plane", Plane.energy, Plane.temperature, Plane.humidity);
+                            status = plane.getStatus();
+                            Blackbox.getInstance().recordActivity("Plane", status[0], status[1], status[2]);
                             break;
                 case 'S': 
                             Print submarine = new Submarine();
                             submarine.printStatus();
-                            Blackbox.getInstance().recordActivity("Submarine", Submarine.energy, Submarine.temperature, Submarine.humidity);
+                            status = submarine.getStatus();
+                            Blackbox.getInstance().recordActivity("Submarine",status[0], status[1], status[2]);
                             break;
                 case 'B': 
                             Blackbox.getInstance().printRecord();
