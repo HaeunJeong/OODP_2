@@ -8,6 +8,15 @@ public class Submarine extends Vehicle implements Print{
     private int depth;
     private int min_depth = 10, max_depth = 100;
 
+    public static int energy, temperature, humidity;
+
+    Submarine(){
+        super();
+        energy = super.energy;
+        temperature = super.temperature;
+        humidity = super.humidity;
+    }
+
     public void showSpeed(){
         speed = (ThreadLocalRandom.current().nextInt(min_speed/10, max_speed/10+1))*5;//5씩 증가하도록
         System.out.println("Speed: "+speed+"Km/Hour");

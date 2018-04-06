@@ -15,23 +15,25 @@ public class Main{
             //충전하는거랑
             
             switch(vehicle){
-                case 'C': //Car car = Car.getInstance();
+                case 'C': 
                             Print car = new Car();
                             car.printStatus();
-                            Blackbox.getInstance("Car").recordActivity(car.energy, car.temperature, car.humidity);
+                            Blackbox.getInstance().recordActivity("Car", Car.energy, Car.temperature, Car.humidity);
                             break;
-                case 'P': //Plane plane = Plane.getInstance();
+                case 'P': 
                             Print plane = new Plane();
                             plane.printStatus();
-                            Blackbox.getInstance().recordActivity(plane.energy, plane.temperature, plane.humidity));
+                            Blackbox.getInstance().recordActivity("Plane", Plane.energy, Plane.temperature, Plane.humidity);
                             break;
-                case 'S': //Submarine submarine = Submarine.getInstance();
+                case 'S': 
                             Print submarine = new Submarine();
                             submarine.printStatus();
-                            Blackbox.getInstance().recordActivity(submarine.energy, submarine.temperature, submarine.humidity);
+                            Blackbox.getInstance().recordActivity("Submarine", Submarine.energy, Submarine.temperature, Submarine.humidity);
                             break;
-                case 'B': Blackbox.getInstance().printRecord();
-                        break;
+                case 'B': 
+                            Blackbox.getInstance().printRecord();
+                            break;
+
                 case 'H': answer = false;
             }
 
