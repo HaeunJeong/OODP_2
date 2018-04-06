@@ -25,38 +25,29 @@ public class Blackbox{
     }
     
     public void printRecord(){
+
         System.out.print("Function: ");
-        for(int i=0; i<vehicleList.size(); i++){
-            System.out.print(vehicleList.get(i).toString());
-            if(i<vehicleList.size()-1)
-                System.out.print("->");
-        }
-        System.out.print("\n");
+        printWithArrow(vehicleList);
 
         System.out.print("Energy: ");
-        for(int i=0; i<energyList.size(); i++){
-            System.out.print(energyList.get(i).toString());
-            if(i<energyList.size()-1)
-                System.out.print("->");
-        }
-        System.out.print("\n");
+        printWithArrow(energyList);
 
         System.out.print("Temperature: ");
-        for(int i=0; i<temperatureList.size(); i++){
-            System.out.print(temperatureList.get(i).toString());
-            if(i<temperatureList.size()-1)
-                System.out.print("->");
-        }
-        System.out.print("\n");
+        printWithArrow(temperatureList);
 
         System.out.print("Humidity: ");
-        for(int i=0; i<humidityList.size(); i++){
-            System.out.print(humidityList.get(i).toString());
-            if(i<temperatureList.size()-1)
-                System.out.print("->");
+        printWithArrow(humidityList);
+
+    }
+
+    public void printWithArrow(ArrayList list){
+
+        for(int i=0; i<list.size(); i++){
+            System.out.print(list.get(i).toString());
+            if(i<list.size()-1)
+                System.out.print(" -> ");
         }
         System.out.print("\n");
-
 
     }
 }

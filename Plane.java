@@ -9,14 +9,7 @@ public class Plane extends Vehicle implements Print{
     private int min_altitude = 500, max_altitude = 2000;
     private int min_density = 50, max_density = 100;
 
-    public static int energy, temperature, humidity;
-
-    // Plane(){
-    //     super();
-    //     energy = super.energy;
-    //     temperature = super.temperature;
-    //     humidity = super.humidity;
-    // }
+    public int energy, temperature, humidity;
 
     public void showSpeed(){
         speed = (ThreadLocalRandom.current().nextInt(min_speed/10, max_speed/10+1))*5;//5씩 증가하도록
@@ -38,8 +31,8 @@ public class Plane extends Vehicle implements Print{
     public void printStatus(){
         printCurrent("Plane");
         showSpeed();
-        showAltitude();
         energy = showEnergy();
+        showAltitude();
         temperature = showTemperature();
         humidity = showHumidity();
         showDensity();

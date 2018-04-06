@@ -11,10 +11,9 @@ public class Main{
 
 			System.out.println("(C)ar (P)lane (S)ubmarine (B)lackbox (H)alt");
             vehicle = input.nextLine().charAt(0);
-            int status[];
+            int status[]; //for saving energy, tempo, humidity
             
-            //충전하는거랑
-            
+            System.out.print("\n");
             switch(vehicle){
                 case 'C': 
                             Print car = new Car();
