@@ -2,25 +2,41 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Arrays;
 
+/* 
+    This Vehicle can transform to variable vehicle form by itself.
+    For example Car, Plane, Submarine.
+*/
+
 public abstract class Vehicle{
 
-    public int speed;
-    public int energy;
-    public int temperature;
-    public int humidity;
+    /* All attributes for vehicle */
+    public int speed, energy, temperature, humidity;
+    public int depth, altitude, density; 
 
-    private int min_energy= 10, max_energy = 100;
-    private int min_temperature = 10, max_temperature = 50;
-    private int min_humidity = 10, max_humidity = 80;
+    /* class variable because is is not changed. 
+        And it is common attribute for all vehicles */
+    private static final int min_energy= 10, max_energy = 100;
+    private static final int min_temperature = 10, max_temperature = 50;
+    private static final int min_humidity = 10, max_humidity = 80;
 
-    public abstract void showSpeed();
+    Vehicle(){}
+
+    /* abstract method. 
+        Because speed is common attribute but range of speed is up to a vehicle. */
+    abstract void showSpeed();
+
+    /* These methods are only some vehicls. 
+        so it is defined by hook methods 
+        Because it might be or might not be implemented */
+    void showDepth(){};
+    void showAltitude(){};
+    void showDensity(){};
     
-    public int showEnergy(){
+    public void showEnergy(){
         energy = (ThreadLocalRandom.current().nextInt(min_energy/10, max_energy/10+1))*10;
         System.out.println("Energy: "+energy+"%");
         if(energy<=40)
             chargeEnergy(energy);
-        return energy;
     }
 
     public void chargeEnergy(int energy){
@@ -28,18 +44,18 @@ public abstract class Vehicle{
         System.out.print("Now Charging ");
 
         Random random = new Random();
-        int randomNum[] = new int[7];
+        int chargeNum[] = new int[7];
 
-        for(int i=1; i<randomNum.length-1; i++){
-            randomNum[i] = random.nextInt(100-energy) + energy;
+        for(int i=1; i<chargeNum.length-1; i++){
+            chargeNum[i] = random.nextInt(100-energy) + energy;
         }
-        randomNum[0]=energy;
-        randomNum[randomNum.length-1]=100;
-        Arrays.sort(randomNum);
+        chargeNum[0]=energy;
+        chargeNum[chargeNum.length-1]=100;
+        Arrays.sort(chargeNum);
 
-        for(int i=0; i<randomNum.length; i++){
-            System.out.print(randomNum[i]);
-            if(i<randomNum.length-1)
+        for(int i=0; i<chargeNum.length; i++){
+            System.out.print(chargeNum[i]);
+            if(i<chargeNum.length-1)
                 System.out.print("%, ");
             else    
                 System.out.print("% \n");
@@ -47,24 +63,20 @@ public abstract class Vehicle{
         
     }
 
-    public int showTemperature(){
+    public void showTemperature(){
         temperature = (ThreadLocalRandom.current().nextInt(min_temperature/10, max_temperature/10+1))*10;
         System.out.println("Temperature: "+temperature+" degree");
-        return temperature;
     }
 
-    public int showHumidity(){
+    public void showHumidity(){
         humidity = (ThreadLocalRandom.current().nextInt(min_humidity/10, max_humidity/10+1))*10;
         System.out.println("Humidity: "+humidity+"%");
-        return humidity;
     }
 
-    public void printCurrent(String string){
-        System.out.println("Current Function: "+string);
-    }
 
-    public void printNext(){
-        System.out.println("Next Vehicle Action:");
+    /* using 'final' keword, it cannot be modified */
+    public final void printNext(){
+        System.out.println("Next Vehicle Action:\n");
     }
 
 }

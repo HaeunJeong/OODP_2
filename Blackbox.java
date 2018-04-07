@@ -11,7 +11,7 @@ public class Blackbox{
 
     private Blackbox(){}
 
-    public static Blackbox getInstance(){
+    public synchronized static Blackbox getInstance(){
         return blackbox;
     }
 

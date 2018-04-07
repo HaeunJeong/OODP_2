@@ -11,27 +11,23 @@ public class Main{
 
 			System.out.println("(C)ar (P)lane (S)ubmarine (B)lackbox (H)alt");
             vehicle = input.nextLine().charAt(0);
-            int status[]; //for saving energy, tempo, humidity
-            
             System.out.print("\n");
+            
             switch(vehicle){
                 case 'C': 
-                            Print car = new Car();
+                            Print car = new CarAdaptor();
                             car.printStatus();
-                            status = car.getStatus();
-                            Blackbox.getInstance().recordActivity("Car", status[0], status[1], status[2]);
+                            car.recordStatus();
                             break;
                 case 'P': 
-                            Print plane = new Plane();
+                            Print plane = new PlaneAdaptor();
                             plane.printStatus();
-                            status = plane.getStatus();
-                            Blackbox.getInstance().recordActivity("Plane", status[0], status[1], status[2]);
+                            plane.recordStatus();
                             break;
                 case 'S': 
-                            Print submarine = new Submarine();
+                            Print submarine = new SubmarineAdaptor();
                             submarine.printStatus();
-                            status = submarine.getStatus();
-                            Blackbox.getInstance().recordActivity("Submarine",status[0], status[1], status[2]);
+                            submarine.recordStatus();
                             break;
                 case 'B': 
                             Blackbox.getInstance().printRecord();

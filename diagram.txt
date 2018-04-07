@@ -1,0 +1,96 @@
+@startuml
+
+
+abstract class Vehicle
+interface Print
+
+Print <|..PlaneAdaptor
+Print <|..CarAdaptor
+Print <|..SubmarineAdaptor
+
+Vehicle <|--PlaneAdaptor
+Vehicle <|--CarAdaptor
+Vehicle <|--SubmarineAdaptor
+
+Blackbox <--PlaneAdaptor
+Blackbox <--CarAdaptor
+Blackbox <--SubmarineAdaptor
+
+class Vehicle{
++speed, energy, temperature, humidity
++depth, altitude, density
+
+{static} -min_energy, max_energy
+{static} -min_temperature, max_temperature
+{static} -min_humidity, max_humidity
+    
+Vehicle()
+{abstract} void showSpeed()
+void showEnergy()
+void chargeEnergy()
+void showTemperature()
+void showHumidity()
+
+void showDepth()
+void showAltitude()
+void showDensity()
+
+}
+
+class CarAdaptor{
+{static} -min_speed, max_speed
+
+CarAdaptor()
+void printStatus()
+void recordStatus()
+void showSpeed()
+
+}
+
+class PlaneAdaptor{
+
+{static} -min_speed, max_speed
+{static} -min_altitude, max_altitude
+{static} -min_density, max_density
+
+PlaneAdaptor()
+void printStatus()
+void recordStatus()
+void showSpeed()
+void showAltitude()
+void showDensity()
+
+}
+
+class SubmarineAdaptor{
+
+{static} -min_speed, max_speed
+{static} -min_depth, max_depth
+
+SubmarineAdaptor()
+void printStatus()
+void recordStatus()
+void showSpeed()
+void showDepth()
+
+}
+
+class Print {
+{abstract} void printStatus()
+{abstract} void recordStatus()
+}
+
+class Blackbox{
+-vehicleList, energyList, temperatureList, humidityList
+{static} -blackbox
+-Blackbox()
+{static} Blackbox getInstance()
+
+void recordActivity()
+void printRecord()
+void printWithArrow()
+
+
+}
+
+@enduml
